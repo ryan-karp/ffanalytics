@@ -165,6 +165,44 @@ score_dst_pts_allowed = function(data_result, pts_bracket) {
   df$dst_pts_allowed
 }
 
+                               
+score_dst_yds_allowed = function(data_result, yds_bracket) {
+  week = attr(data_result, "week")
+  year = attr(data_result, "season")
+  df = data_result[["DST"]]
+  na_idx = is.na(df$dst_yds_allowed)
+
+  if(year >= 2021) {
+    n_games = 17L
+  } else {
+    n_games = 16L
+  }
+
+  if(week == 0) {
+    set.seed(1L)
+
+    ids_idx = coalesce(
+      match(df$id[!na_idx], yds_bracket_coefs$id),
+      match(df$id[!na_idx], yds_bracket_coefs$nfl_id)
+    )
+
+    ypg = df$dst_yds_allowed[!na_idx] / n_games
+    team = yds_bracket_coefs$team[ids_idx]
+    idx = match(team, yds_bracket_coefs$team)
+    ypg_sd = yds_bracket_coefs$Intercept[idx] + (yds_bracket_coefs$season_mean[1] * ypg)
+
+    game_l = Map(function(x, y) {
+      season_games = round(rnorm(17, x, y))
+      season_games = replace(season_games, season_games < 0, 0)
+      score_yds_bracket(season_games, yds_bracket)
+    }, ypg, ypg_sd)
+    df$dst_yds_allowed[!na_idx] = vapply(game_l, sum, numeric(1L))
+  } else {
+    df$dst_yds_allowed[!na_idx] = score_yds_bracket(df$dst_yds_allowed, yds_bracket)
+  }
+  df$dst_yds_allowed
+}
+
 source_points = function(data_result, scoring_rules, return_data_result = FALSE) {
 
   year = attr(data_result, "season")
@@ -172,10 +210,10 @@ source_points = function(data_result, scoring_rules, return_data_result = FALSE)
 
   scoring_cleaned = make_scoring_tables(scoring_rules)
   scoring_tables = scoring_cleaned$scoring_tables
-  pts_bracket = scoring_cleaned$pts_bracket
+  yds_bracket = scoring_cleaned$yds_bracket
 
-  # Scoring the points brackets
-  data_result$DST$dst_pts_allowed = score_dst_pts_allowed(data_result, pts_bracket)
+  # Scoring the yards brackets
+  data_result$DST$dst_yds_allowed = score_dst_yds_allowed(data_result, yds_bracket)
 
   l_raw_points = lapply(names(data_result), function(pos) {
     scoring_table = scoring_tables[[pos]]
@@ -276,6 +314,7 @@ projections_table = function(data_result, scoring_rules = NULL, src_weights = NU
   scoring_objs = make_scoring_tables(scoring_rules)
   scoring_l = scoring_objs$scoring_tables
   l_pts_bracket = scoring_objs$pts_bracket
+  l_yds_bracket = scoring_objs$yds_bracket
 
   # Adding weight and removing empty id's
   data_result[] = lapply(data_result, function(df) {
