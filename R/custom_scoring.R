@@ -74,6 +74,10 @@ make_scoring_tables = function(scoring_rules) {
   l_pts_bracket = rapply(scoring_rules$pts_bracket, as.numeric, how = "replace")
   scoring_rules$pts_bracket = NULL
 
+  # yards bracket for DST
+  l_yds_bracket = rapply(scoring_rules$yds_bracket, as.numeric, how = "replace")
+  scoring_rules$yds_bracket = NULL
+
   # Next the main scoring tables (by position)
   scoring_l = vector("list", 9L)
   names(scoring_l) = c("QB", "RB", "WR", "TE", "K", "DST", "DL", "LB", "DB")
@@ -90,6 +94,8 @@ make_scoring_tables = function(scoring_rules) {
       if(pos %in% "DST") {
         scoring_table = rbind(scoring_table,
                               data.frame(category = "dst", column = "pts_bracket", val = 1))
+        scoring_table = rbind(scoring_table,
+                              data.frame(category = "dst", column = "yds_bracket", val = 1))
       }
       scoring_l[[pos]] = scoring_table
     }
@@ -115,6 +121,8 @@ make_scoring_tables = function(scoring_rules) {
       if(pos %in% "DST") {
         scoring_table = rbind(scoring_table,
                               data.frame(category = "dst", column = "pts_bracket", val = 1))
+        scoring_table = rbind(scoring_table,
+                              data.frame(category = "dst", column = "yds_bracket", val = 1))
       }
       scoring_l[[pos]] = scoring_table
     }
