@@ -45,6 +45,17 @@ scoring <- list(
     list(threshold = 20, points = 4),
     list(threshold = 34, points = 0),
     list(threshold = 99, points = -4)
+  ),
+    yds_bracket = list(
+    list(threshold = 99, points = 5),
+    list(threshold = 199, points = 3),
+    list(threshold = 299, points = 2),
+    list(threshold = 349, points = 0),
+    list(threshold = 399, points = -1),
+    list(threshold = 449, points = -3),
+    list(threshold = 499, points = -5),
+    list(threshold = 549, points = -6),
+    list(threshold = 999, points = -7)
   )
 )
 
@@ -115,7 +126,7 @@ scoring_empty = list(pass = list(pass_att = NULL, pass_comp = NULL, pass_inc = N
                                           idp_int = NULL, idp_fum_force = NULL, idp_fum_rec = NULL,
                                           idp_pd = NULL, idp_td = NULL, idp_safety = NULL)),
                      dst = list(dst_fum_rec = NULL, dst_int = NULL, dst_safety = NULL, dst_sacks = NULL,
-                                dst_td = NULL, dst_blk = NULL, dst_ret_yds = NULL, dst_pts_allowed = NULL))
+                                dst_td = NULL, dst_blk = NULL, dst_ret_yds = NULL, dst_pts_allowed = NULL, dst_yds_allowed = NULL))
 
 
 
