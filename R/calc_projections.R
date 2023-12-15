@@ -127,6 +127,14 @@ score_pts_bracket = function(points, pts_bracket) {
   vals[max.col(thresh_idx, "first")]
 }
 
+                               
+score_yds_bracket = function(yards, yds_bracket) {
+  criteria = vapply(yds_bracket, `[[`, numeric(1L), 1L)
+  vals = vapply(yds_bracket, `[[`, numeric(1L), 2L)
+  thresh_idx = t(vapply(yards, `<=`, logical(length(criteria)), criteria))
+  vals[max.col(thresh_idx, "first")]
+}
+
 
 score_dst_pts_allowed = function(data_result, pts_bracket) {
   week = attr(data_result, "week")
