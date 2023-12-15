@@ -146,7 +146,7 @@ scoring_type_for_cols = c(
   idp_sack = "idp", idp_int = "idp", idp_fum_force = "idp", idp_fum_rec = "idp",
   idp_pd = "idp", idp_td = "idp", idp_safety = "idp", dst_fum_rec = "dst",
   dst_int = "dst", dst_safety = "dst", dst_sacks = "dst", dst_td = "dst",
-  dst_blk = "dst", dst_ret_yds = "dst", dst_pts_allowed = "dst"
+  dst_blk = "dst", dst_ret_yds = "dst", dst_pts_allowed = "dst", dst_yds_allowed = "dst"
   )
 
 
