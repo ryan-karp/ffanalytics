@@ -450,27 +450,27 @@ projections_table = function(data_result, scoring_rules = NULL, src_weights = NU
   # Adding VOR and rank
   out$temp_vor_pos = vor_baseline[out$pos]
 
-  out = out %>%
-    group_by(avg_type, pos) %>%
-    mutate(temp_floor_rank = dense_rank(-floor),
-           temp_ceiling_rank = dense_rank(-ceiling),
-           temp_vor_ref_points = points[which.max(pos_rank == temp_vor_pos)], # which.max in-case there are NA ranks
-           points_vor = points - temp_vor_ref_points,
-           temp_vor_ref_floor = floor[which.max(temp_floor_rank == temp_vor_pos)],
-           floor_vor = floor - temp_vor_ref_floor,
-           temp_vor_ref_ceiling = ceiling[which.max(temp_ceiling_rank == temp_vor_pos)],
-           ceiling_vor = ceiling - temp_vor_ref_ceiling) %>%
-    ungroup(pos) %>%
-    mutate(rank = dense_rank(-points_vor),
-           floor_rank = dense_rank(-floor_vor),
-           ceiling_rank = dense_rank(-ceiling_vor)) %>%
-    select(avg_type, id, pos, points, sd_pts, dropoff, floor, ceiling, points_vor,
-           floor_vor, ceiling_vor, rank, floor_rank, ceiling_rank, pos_rank, tier) %>%
-    ungroup()
-
-  attr(out, "season") = season
-  attr(out, "week") = week
-  attr(out, "lg_type") = lg_type
+# out = out %>%
+#   group_by(avg_type, pos) %>%
+#   mutate(temp_floor_rank = dense_rank(-floor),
+#          temp_ceiling_rank = dense_rank(-ceiling),
+#          temp_vor_ref_points = points[which.max(pos_rank == temp_vor_pos)], # which.max in-case there are NA ranks
+#          points_vor = points - temp_vor_ref_points,
+#          temp_vor_ref_floor = floor[which.max(temp_floor_rank == temp_vor_pos)],
+#          floor_vor = floor - temp_vor_ref_floor,
+#          temp_vor_ref_ceiling = ceiling[which.max(temp_ceiling_rank == temp_vor_pos)],
+#          ceiling_vor = ceiling - temp_vor_ref_ceiling) %>%
+#   ungroup(pos) %>%
+#   mutate(rank = dense_rank(-points_vor),
+#          floor_rank = dense_rank(-floor_vor),
+#          ceiling_rank = dense_rank(-ceiling_vor)) %>%
+#   select(avg_type, id, pos, points, sd_pts, dropoff, floor, ceiling, points_vor,
+#          floor_vor, ceiling_vor, rank, floor_rank, ceiling_rank, pos_rank, tier) %>%
+#   ungroup()
+# 
+# attr(out, "season") = season
+# attr(out, "week") = week
+# attr(out, "lg_type") = lg_type
   out
 }
 
