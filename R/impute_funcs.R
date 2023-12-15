@@ -79,8 +79,11 @@ impute_fun_list = list(
   fg_4049 = function(fg_4049, fg) {
     derive_from_rate(fg_4049, fg)
   },
-  fg_50 = function(fg_50, fg) {
-    derive_from_rate(fg_50, fg)
+  fg_5059 = function(fg_5059, fg) {
+    derive_from_rate(fg_5059, fg)
+  },
+  fg_60 = function(fg_60, fg) {
+    derive_from_rate(fg_60, fg)
   },
   fg_miss = function(fg_miss, fg, fg_att) {
     idx = is.na(fg_miss)
