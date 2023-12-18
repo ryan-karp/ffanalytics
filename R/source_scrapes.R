@@ -179,6 +179,9 @@ scrape_nfl = function(pos = c("QB", "RB", "WR", "TE", "K", "DST"), season = NULL
     if(pos %in% c("RB", "WR", "TE") && "pass_int" %in% names(out_df)) {
       out_df$pass_int = NULL
     }
+    if (pos == "K") {
+      out <- out %>% mutate(fg = sum(fg_0019, fg_2029, fg_3039, fg_4049, fg_50)
+    }
 
     # Misc column cleanup before done
     out_df$data_src = "NFL"
