@@ -541,8 +541,8 @@ espn_columns = c(
   "96" = "dst_fum_recvr",
   "95" = "dst_int",
   "122" = "dst_td",
-  "137" = "dst_pts_against",
-  "126" = "dst_yds_against"
+  "137" = "dst_pts_allowed",
+  "126" = "dst_yds_allowed"
 )
 
 espn_team_nums = c(
