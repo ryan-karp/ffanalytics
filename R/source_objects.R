@@ -542,7 +542,7 @@ espn_columns = c(
   "95" = "dst_int",
   "122" = "dst_td",
   "137" = "dst_pts_against",
-  "127" = "dst_yds_against"
+  "126" = "dst_yds_against"
 )
 
 espn_team_nums = c(
