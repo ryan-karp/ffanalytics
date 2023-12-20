@@ -144,7 +144,7 @@ scoring_type_for_cols = c(
   rec_200_yds = "rec", all_pos = "misc", fumbles_lost = "misc",
   fumbles_total = "misc", sacks = "misc", two_pts = "misc", xp = "kick",
   fg_0019 = "kick", fg_2029 = "kick", fg_3039 = "kick", fg_4049 = "kick",
-  fg_50 = "kick", fg_miss = "kick", , fg_0039 = "kick", all_pos = "ret", return_tds = "ret",
+  fg_50 = "kick", fg_miss = "kick", fg_0039 = "kick", all_pos = "ret", return_tds = "ret",
   return_yds = "ret", all_pos = "idp", idp_solo = "idp", idp_asst = "idp",
   idp_sack = "idp", idp_int = "idp", idp_fum_force = "idp", idp_fum_rec = "idp",
   idp_pd = "idp", idp_td = "idp", idp_safety = "idp", dst_fum_rec = "dst",
