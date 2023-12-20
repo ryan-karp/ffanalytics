@@ -129,6 +129,7 @@ make_scoring_tables = function(scoring_rules) {
   }
 
   list(pts_bracket = l_pts_bracket,
+       yds_bracket = l_yds_bracket,
        scoring_tables = scoring_l)
 
 }
