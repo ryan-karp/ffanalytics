@@ -201,7 +201,7 @@ scrape_nfl = function(pos = c("QB", "RB", "WR", "TE", "K", "DST"), season = NULL
     )
     out_df = out_df %>%
       dplyr::select(id, src_id = nfl_id, any_of("player"), pos, team, dplyr::everything())
-  
+
 
     Sys.sleep(2L) # temporary, until I get an argument for honoring the crawl delay
 
