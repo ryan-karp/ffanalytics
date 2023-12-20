@@ -179,9 +179,6 @@ scrape_nfl = function(pos = c("QB", "RB", "WR", "TE", "K", "DST"), season = NULL
     if(pos %in% c("RB", "WR", "TE") && "pass_int" %in% names(out_df)) {
       out_df$pass_int = NULL
     }
-    if (pos == "K") {
-      out_df <- out_df %>%  mutate_at(c("fg_0019", "fg_2029", "fg_3039", "fg_4049", "fg_50"), as.numeric) %>% mutate(fg = sum(fg_0019, fg_2029, fg_3039, fg_4049, fg_50))
-    }
 
     # Misc column cleanup before done
     out_df$data_src = "NFL"
@@ -204,7 +201,11 @@ scrape_nfl = function(pos = c("QB", "RB", "WR", "TE", "K", "DST"), season = NULL
     )
     out_df = out_df %>%
       dplyr::select(id, src_id = nfl_id, any_of("player"), pos, team, dplyr::everything())
-
+    
+    if (pos == "K") {
+      out_df <- out_df %>%  mutate_at(c("fg_0019", "fg_2029", "fg_3039", "fg_4049", "fg_50"), as.numeric) %>% mutate(fg = sum(fg_0019, fg_2029, fg_3039, fg_4049, fg_50))
+    }
+  
 
     Sys.sleep(2L) # temporary, until I get an argument for honoring the crawl delay
 
