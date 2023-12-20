@@ -24,7 +24,7 @@ scoring <- list(
   ),
   kick = list(
     xp = 1.0, fg_0019 = 3.0,  fg_2029 = 3.0, fg_3039 = 3.0, fg_4049 = 4.0,
-    fg_5059 = 5.0,  fg_60 = 6.0,  fg_miss = -1.0
+    fg_50 = 5.0, fg_miss = -1.0
   ),
   ret = list(
     all_pos = TRUE,
@@ -114,7 +114,7 @@ scoring_empty = list(pass = list(pass_att = NULL, pass_comp = NULL, pass_inc = N
                                  WR = list(fumbles_lost = NULL, fumbles_total = NULL, sacks = NULL, two_pts = NULL),
                                  TE = list(fumbles_lost = NULL, fumbles_total = NULL, sacks = NULL, two_pts = NULL)),
                      kick = list(xp = NULL, fg_0019 = NULL, fg_2029 = NULL, fg_3039 = NULL,
-                                 fg_4049 = NULL, fg_5059 = NULL, fg_60 = NULL, fg_miss = NULL),
+                                 fg_4049 = NULL, fg_50 = NULL, fg_miss = NULL),
                      ret = list(all_pos = NULL, return_tds = NULL, return_yds = NULL),
                      idp = list(all_pos = NULL, idp_solo = NULL, idp_asst = NULL, idp_sack = NULL,
                                 idp_int = NULL, idp_fum_force = NULL, idp_fum_rec = NULL, idp_pd = NULL,
@@ -144,7 +144,7 @@ scoring_type_for_cols = c(
   rec_200_yds = "rec", all_pos = "misc", fumbles_lost = "misc",
   fumbles_total = "misc", sacks = "misc", two_pts = "misc", xp = "kick",
   fg_0019 = "kick", fg_2029 = "kick", fg_3039 = "kick", fg_4049 = "kick",
-  fg_5059 = "kick", fg_60 = "kick", fg_miss = "kick", all_pos = "ret", return_tds = "ret",
+  fg_50 = "kick", fg_miss = "kick", all_pos = "ret", return_tds = "ret",
   return_yds = "ret", all_pos = "idp", idp_solo = "idp", idp_asst = "idp",
   idp_sack = "idp", idp_int = "idp", idp_fum_force = "idp", idp_fum_rec = "idp",
   idp_pd = "idp", idp_td = "idp", idp_safety = "idp", dst_fum_rec = "dst",
