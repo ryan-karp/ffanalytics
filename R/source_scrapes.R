@@ -1204,7 +1204,7 @@ scrape_espn = function(pos = c("QB", "RB", "WR", "TE", "K", "DST"), season = NUL
       l_players[[i]] = espn_json[[i]]$player$stats[[1]]$stats
       l_players[[i]] = l_players[[i]][names(l_players[[i]]) %in% names(espn_columns)]
       names(l_players[[i]]) = espn_columns[names(l_players[[i]])]
-      l_players[[i]][] = lapply(l_players[[i]], round)
+      # l_players[[i]][] = lapply(l_players[[i]], round)
 
       # Misc player info
       l_players[[i]]$espn_id = espn_json[[i]]$id
