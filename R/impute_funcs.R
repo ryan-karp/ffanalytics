@@ -129,6 +129,9 @@ impute_via_rates_and_mean = function(data_result = NULL,
       }
       if (!"fg_miss" %in% df_names) {
         df$fg_miss = NA
+        if ("fg" %in% df_names && "fg_att" %in% df_names) {
+          df$fg_miss = df$fg_att - df$fg
+        }
       }
       else {
         idx = is.na(df$fg_att)
