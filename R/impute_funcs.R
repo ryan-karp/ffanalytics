@@ -119,6 +119,9 @@ impute_via_rates_and_mean = function(data_result = NULL,
         idx = is.na(df$fg)
         df$fg[idx] = rowSums(df[idx, tot_cols], na.rm = TRUE)
       }
+      if ("fg" %in% df_names && length(intersect(fg_cols, names(df))) == 0) {
+        df$fg_0039 = df$fg
+      }
       if (!"xp_att" %in% df_names) {
         if (!"xp_miss" %in% df_names) {
           df$xp_att = NA
